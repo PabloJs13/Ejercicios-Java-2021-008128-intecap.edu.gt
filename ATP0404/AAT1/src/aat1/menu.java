@@ -143,13 +143,17 @@ public class menu extends javax.swing.JFrame {
 
         btnbuscar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnbuscar.setText("Buscar");
+        btnbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbuscarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, -1, -1));
 
         txtbusc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         getContentPane().add(txtbusc, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 270, 60, -1));
 
         btnenviar.setText("ENVIAR");
-        btnenviar.setActionCommand("ENVIAR");
         btnenviar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnenviarActionPerformed(evt);
@@ -222,6 +226,18 @@ public class menu extends javax.swing.JFrame {
          pnlselectipo.setToolTipText("");
          tbldates.setToolTipText("");
     }//GEN-LAST:event_btneliminarActionPerformed
+
+    private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
+       int fila = tbldates.getSelectedRow();
+       if (tbldates.getSelectedRow() !=-1) {
+           txtplaca.setText(tbldates.getValueAt(fila, 0).toString());
+           txthora.setText(tbldates.getValueAt(fila, 3).toString());
+           txtfecha.setText(tbldates.getValueAt(fila, 4).toString());
+           
+           
+       }
+        
+    }//GEN-LAST:event_btnbuscarActionPerformed
 
     /**
      * @param args the command line arguments
