@@ -61,10 +61,10 @@ public class menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        gtntransporte = new javax.swing.ButtonGroup();
         lbltitulo = new javax.swing.JLabel();
         lblplaca = new javax.swing.JLabel();
         txtplaca = new javax.swing.JTextField();
-        cmbtipo = new javax.swing.JComboBox<>();
         lblhora = new javax.swing.JLabel();
         txthora = new javax.swing.JTextField();
         lblfecha = new javax.swing.JLabel();
@@ -81,7 +81,8 @@ public class menu extends javax.swing.JFrame {
         rbtncarro = new javax.swing.JRadioButton();
         rbtnmoto = new javax.swing.JRadioButton();
         btneliminar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblestado = new javax.swing.JLabel();
+        txtestado = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -96,9 +97,6 @@ public class menu extends javax.swing.JFrame {
 
         txtplaca.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         getContentPane().add(txtplaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 110, -1));
-
-        cmbtipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2 ruedas", "4 ruedas", "carga pesada" }));
-        getContentPane().add(cmbtipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 110, -1));
 
         lblhora.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblhora.setText("Hora:");
@@ -163,18 +161,21 @@ public class menu extends javax.swing.JFrame {
 
         pnlselectipo.setToolTipText("kk");
 
+        gtntransporte.add(rbtnbici);
         rbtnbici.setText("Bicicleta");
         pnlselectipo.add(rbtnbici);
 
+        gtntransporte.add(rbtncarro);
         rbtncarro.setText("Carro");
         pnlselectipo.add(rbtncarro);
 
+        gtntransporte.add(rbtnmoto);
         rbtnmoto.setText("Motocicleta");
         pnlselectipo.add(rbtnmoto);
 
         getContentPane().add(pnlselectipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 280, 50));
 
-        btneliminar.setText("Eliminar");
+        btneliminar.setText("Limpiar");
         btneliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btneliminarActionPerformed(evt);
@@ -182,8 +183,12 @@ public class menu extends javax.swing.JFrame {
         });
         getContentPane().add(btneliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ff.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 460));
+        lblestado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblestado.setText("Estado:");
+        getContentPane().add(lblestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, -1));
+
+        txtestado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        getContentPane().add(txtestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 100, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -194,17 +199,25 @@ public class menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnsalirActionPerformed
 
     private void btnregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistrarActionPerformed
-        String placa, tipodevehiculo,hora,fecha,estado,nodeingreso;
+        String placa, tipodevehiculo,hora,fecha,estado,nodeingreso,transporte;
         
         
        
         
+        
         String[] infor = new String[6];
         infor[0]=txtplaca.getText();
-        infor[1]=cmbtipo.getToolTipText();
+        infor[1]=
         infor[2]=txthora.getText();
         infor[3]=txtfecha.getText();
-        infor[4]=pnlselectipo.getToolTipText();
+        infor[4]=txtestado.getText();
+        
+        
+        
+        
+        
+            
+        
         
         
         tablauno.addRow(infor);
@@ -223,8 +236,11 @@ public class menu extends javax.swing.JFrame {
          cmbtipo.setToolTipText("");
          txthora.setText("");
          txtfecha.setText("");
-         pnlselectipo.setToolTipText("");
          tbldates.setToolTipText("");
+         gtntransporte.clearSelection();
+         
+         
+         
     }//GEN-LAST:event_btneliminarActionPerformed
 
     private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
@@ -280,9 +296,9 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JButton btnenviar;
     private javax.swing.JButton btnregistrar;
     private javax.swing.JButton btnsalir;
-    private javax.swing.JComboBox<String> cmbtipo;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.ButtonGroup gtntransporte;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblestado;
     private javax.swing.JLabel lblfecha;
     private javax.swing.JLabel lblhora;
     private javax.swing.JLabel lblplaca;
@@ -293,6 +309,7 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbtnmoto;
     private javax.swing.JTable tbldates;
     private javax.swing.JTextField txtbusc;
+    private javax.swing.JTextField txtestado;
     private javax.swing.JTextField txtfecha;
     private javax.swing.JTextField txthora;
     private javax.swing.JTextField txtplaca;
