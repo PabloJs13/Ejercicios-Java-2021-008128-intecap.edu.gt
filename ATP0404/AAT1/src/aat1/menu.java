@@ -75,7 +75,6 @@ public class menu extends javax.swing.JFrame {
         btnsalir = new javax.swing.JButton();
         btnbuscar = new javax.swing.JButton();
         txtbusc = new javax.swing.JTextField();
-        btnenviar = new javax.swing.JButton();
         pnlselectipo = new javax.swing.JPanel();
         rbtnbici = new javax.swing.JRadioButton();
         rbtncarro = new javax.swing.JRadioButton();
@@ -83,6 +82,9 @@ public class menu extends javax.swing.JFrame {
         btneliminar = new javax.swing.JButton();
         lblestado = new javax.swing.JLabel();
         txtestado = new javax.swing.JTextField();
+        lblnoingreso = new javax.swing.JLabel();
+        txtnoingreso = new javax.swing.JTextField();
+        lblfondoo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -151,14 +153,6 @@ public class menu extends javax.swing.JFrame {
         txtbusc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         getContentPane().add(txtbusc, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 270, 60, -1));
 
-        btnenviar.setText("ENVIAR");
-        btnenviar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnenviarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnenviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, -1, -1));
-
         pnlselectipo.setToolTipText("kk");
 
         gtntransporte.add(rbtnbici);
@@ -181,7 +175,7 @@ public class menu extends javax.swing.JFrame {
                 btneliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(btneliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, -1, -1));
+        getContentPane().add(btneliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, -1, -1));
 
         lblestado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblestado.setText("Estado:");
@@ -189,6 +183,14 @@ public class menu extends javax.swing.JFrame {
 
         txtestado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         getContentPane().add(txtestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 100, -1));
+
+        lblnoingreso.setText("NO. de ingreso:");
+        lblnoingreso.setToolTipText("");
+        getContentPane().add(lblnoingreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, -1));
+        getContentPane().add(txtnoingreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 80, -1));
+
+        lblfondoo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ff.jpg"))); // NOI18N
+        getContentPane().add(lblfondoo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 460));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -199,20 +201,37 @@ public class menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnsalirActionPerformed
 
     private void btnregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistrarActionPerformed
-        String placa, tipodevehiculo,hora,fecha,estado,nodeingreso,transporte;
+        String placa,tipodevehiculo,hora,fecha,estado,nodeingreso,transporte;
         
         
        
+        gtntransporte.add(rbtnbici);
+        gtntransporte.add(rbtncarro);
+        gtntransporte.add(rbtnmoto);
         
         
         String[] infor = new String[6];
         infor[0]=txtplaca.getText();
-        infor[1]=
+        if(rbtnbici.isSelected()) { infor[1] = "Bicicleta"; }
+        else if(rbtncarro.isSelected()) { infor[1] = "Carro"; }
+        else if (rbtnmoto.isSelected()) { infor[1] = "Motocicleta"; }
         infor[2]=txthora.getText();
         infor[3]=txtfecha.getText();
         infor[4]=txtestado.getText();
+        infor[5]=txtnoingreso.getText();
         
         
+        if(rbtnbici.isSelected()) {
+            tipodevehiculo="Bicicleta";
+        }
+        else if (rbtncarro.isSelected()) {
+            tipodevehiculo="Carro";
+        }
+        if (rbtnmoto.isSelected()) {
+            tipodevehiculo="Moto";
+            
+        }
+         
         
         
         
@@ -226,18 +245,16 @@ public class menu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnregistrarActionPerformed
 
-    private void btnenviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnenviarActionPerformed
-       
-         
-    }//GEN-LAST:event_btnenviarActionPerformed
-
     private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
         txtplaca.setText("");
-         cmbtipo.setToolTipText("");
+         
          txthora.setText("");
          txtfecha.setText("");
          tbldates.setToolTipText("");
          gtntransporte.clearSelection();
+         txtnoingreso.setText("");
+         txtestado.setText("");
+         
          
          
          
@@ -293,14 +310,15 @@ public class menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnbuscar;
     private javax.swing.JButton btneliminar;
-    private javax.swing.JButton btnenviar;
     private javax.swing.JButton btnregistrar;
     private javax.swing.JButton btnsalir;
     private javax.swing.ButtonGroup gtntransporte;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblestado;
     private javax.swing.JLabel lblfecha;
+    private javax.swing.JLabel lblfondoo;
     private javax.swing.JLabel lblhora;
+    private javax.swing.JLabel lblnoingreso;
     private javax.swing.JLabel lblplaca;
     private javax.swing.JLabel lbltitulo;
     private javax.swing.JPanel pnlselectipo;
@@ -312,6 +330,7 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JTextField txtestado;
     private javax.swing.JTextField txtfecha;
     private javax.swing.JTextField txthora;
+    private javax.swing.JTextField txtnoingreso;
     private javax.swing.JTextField txtplaca;
     // End of variables declaration//GEN-END:variables
 
